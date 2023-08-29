@@ -2,15 +2,15 @@ import * as fs from 'node:fs';
 
 export default class CidadesHTMLReport {
 
-  ler_cidades (caminho) {
-    return fs.readFileSync(caminho);
+  ler (caminho) {
+    this.cidades = fs.readFileSync(caminho);
   }
 
-  parse_json (cidades_json) {
-    return JSON.parse(cidades_json);
+  parse () {
+    this.cidades = JSON.parse(this.cidades);
   }
 
-  reportar_html (cidades) {
+  reportar() {
     let result = `
   <!DOCTYPE HTML>
   <html>
@@ -23,8 +23,8 @@ export default class CidadesHTMLReport {
       <ul>
   `;
 
-    for (let i = 0; i < cidades.length; i++) {
-      result += '     <li>' + cidades[i]['Nome'] + '</li>\n';
+    for (let i = 0; i < this.cidades.length; i++) {
+      result += '     <li>' + this.cidades[i]['Nome'] + '</li>\n';
     }
 
     result += `
