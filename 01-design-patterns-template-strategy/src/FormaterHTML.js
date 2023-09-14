@@ -1,8 +1,8 @@
-import CitiesReporter from './CitiesReporter.js';
+import AbstractFormater from './AbstractFormater.js';
 
-export default class CitiesReporterHTML extends CitiesReporter {
+export default class FormaterHTML extends AbstractFormater {
 
-  _output () {
+  output (cities) {
     let html = `
   <!DOCTYPE HTML>
   <html>
@@ -15,8 +15,8 @@ export default class CitiesReporterHTML extends CitiesReporter {
       <ul>
   `;
 
-    for (let i = 0; i < this._cities.length; i++) {
-      html += `     <li>${this._cities[i]['Nome']}</li>\n`;
+    for (let i = 0; i < cities.length; i++) {
+      html += `     <li>${cities[i]['Nome']}</li>\n`;
     }
 
     html += `
